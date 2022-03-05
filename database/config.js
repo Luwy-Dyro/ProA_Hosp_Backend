@@ -1,26 +1,22 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
 
-const dbConection = async() => {
 
-//user2022
-//User2022
-    try{
+const dbConect = async() => {
+
+    try {
+        await mongoose.connect( process.env.DB_CNN );
+
+        console.log('DB Online');
         
-       await mongoose.connect( process.env.DB_CNN);
-
-       console.log("DB online");
-
-
-    }catch(error){
+    } catch (error) {
         console.log(error);
-        throw new Error('Error en la BD')
+        throw new Error('Error a la hora de iniciar la BD ver logs');
     }
-
 
 
 }
 
+
 module.exports = {
-    dbConection
+    dbConect
 }
